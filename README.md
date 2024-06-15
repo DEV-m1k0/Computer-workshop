@@ -1,6 +1,16 @@
 # <div align="center">Сервис для компьютерной мастерской</div>
 
-## Роли и их возможности:
+<div align="center">
+  <p><h2>Мои социальные сети</h2></p>
+  <a href="https://vk.com/dzh_zus" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=vk&logo=vk&label=&color=blue&logoColor=white&labelColor=&style=for-the-badge" height="25" alt="youtube logo"  />
+  </a>
+  <a href="https://t.me/m1ko_chanel" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=Telegram&logo=telegram&label=&color=2CA5E0&logoColor=white&labelColor=&style=for-the-badge" height="25" alt="telegram logo"  />
+  </a>
+</div>
+
+## Роли и их возможности
 
 #### Будет разграничение по ролям:
 1. Не авторизованный пользователь;
