@@ -28,3 +28,14 @@ jobs:
     - name: Run Tests
       run: |
         python core/manage.py test
+    - name: Run Migrations
+      run: python core/manage.py migrate
+      env:
+        DJANGO_SETTINGS_MODULE: core.settings
+        DBENGINE: django.db.backends.mysql
+        DBNAME: computer_workshop
+        DBUSER: root
+        DBPASSWORD: 12345678
+        DBHOST: localhost
+        DBPORT: 3306
+
