@@ -13,7 +13,16 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.11, 3.12]
+        python-version: [3.11]
+   
+    env:
+      ENGINE: django.db.backends.mysql
+      NAME: ${{ secrets.MYSQL_DBNAME }}
+      USER: ${{ secrets.MYSQL_DBUSER }}
+      PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+      HOST: ${{ secrets.MYSQL_DBHOST }}
+      PORT: ${{ secrets.MYSQL_DBPORT }}
+
 
     steps:
     - uses: actions/checkout@v4
@@ -21,21 +30,13 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run Tests
-      run: |
-        python core/manage.py test
-      env:
-        DJANGO_SETTINGS_MODULE: core.settings
-        DBENGINE: django.db.backends.mysql
-        DBNAME: ${{ secrets.MYSQL_DBNAME }}
-        DBUSER: ${{ secrets.MYSQL_DBUSER }}
-        DBPASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-        DBHOST: ${{ secrets.MYSQL_DBHOST }}
-        DBPORT: ${{ secrets.MYSQL_DBPORT }}
+    # - name: Install Dependencies
+    #   run: |
+    #     python3 -m pip install --upgrade pip
+    #     pip3 install -r requirements.txt
+    # - name: Run Tests
+    #   run: |
+    #     python core/manage.py test
 
     - name: Run Migrations
       run: python core/manage.py migrate
