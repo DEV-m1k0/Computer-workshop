@@ -14,13 +14,13 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.11, 3.12]
-    env:
-      DBENGINE: django.db.backends.mysql
-      DATABASE_NAME: ${{ secrets.MYSQL_DBNAME }}
-      DATABASE_USER: ${{ secrets.MYSQL_DBUSER }}
-      DATABASE_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-      DATABASE_HOST: ${{ secrets.MYSQL_DBHOST }}
-      DATABASE_PORT: ${{ secrets.MYSQL_DBPORT }}
+    # env:
+    #   DBENGINE: django.db.backends.mysql
+    #   DATABASE_NAME: ${{ secrets.MYSQL_DBNAME }}
+    #   DATABASE_USER: ${{ secrets.MYSQL_DBUSER }}
+    #   DATABASE_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+    #   DATABASE_HOST: ${{ secrets.MYSQL_DBHOST }}
+    #   DATABASE_PORT: ${{ secrets.MYSQL_DBPORT }}
 
     steps:
     - uses: actions/checkout@v4
@@ -33,9 +33,24 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
+      env:
+        DBENGINE: django.db.backends.mysql
+        DATABASE_NAME: ${{ secrets.MYSQL_DBNAME }}
+        DATABASE_USER: ${{ secrets.MYSQL_DBUSER }}
+        DATABASE_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+        DATABASE_HOST: ${{ secrets.MYSQL_DBHOST }}
+        DATABASE_PORT: ${{ secrets.MYSQL_DBPORT }}
       run: |
         python core/manage.py test
 
     - name: Run Migrations
-      run: python core/manage.py migrate
+      env:
+        DBENGINE: django.db.backends.mysql
+        DATABASE_NAME: ${{ secrets.MYSQL_DBNAME }}
+        DATABASE_USER: ${{ secrets.MYSQL_DBUSER }}
+        DATABASE_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+        DATABASE_HOST: ${{ secrets.MYSQL_DBHOST }}
+        DATABASE_PORT: ${{ secrets.MYSQL_DBPORT }}
+      run: |
+        python core/manage.py migrate
 
