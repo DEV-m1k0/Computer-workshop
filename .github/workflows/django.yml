@@ -14,13 +14,13 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.11, 3.12]
-    env:
-      DBENGINE: django.db.backends.mysql
-      DATABASE_NAME: computer_workshop
-      DATABASE_USER: root
-      DATABASE_PASSWORD: 12345678
-      DATABASE_HOST: localhost
-      DATABASE_PORT: 3306
+    # env:
+    #   DBENGINE: django.db.backends.mysql
+    #   DATABASE_NAME: computer_workshop
+    #   DATABASE_USER: root
+    #   DATABASE_PASSWORD: 12345678
+    #   DATABASE_HOST: localhost
+    #   DATABASE_PORT: 3306
       # DBENGINE: django.db.backends.mysql
       # DATABASE_NAME: ${{ secrets.MYSQL_DBNAME }}
       # DATABASE_USER: ${{ secrets.MYSQL_DBUSER }}
