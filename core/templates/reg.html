@@ -1,0 +1,21 @@
+<!-- Наследуемся от основного шаблона -->
+{% extends 'base.html' %}
+
+<!-- Загружаем файл со стилями -->
+{% load static %}
+
+<!-- Даем название странице -->
+{% block title %}Registration{% endblock %}
+
+<!-- Делаем разметку странице -->
+{% block content %}
+
+<div class="container">
+  {% csrf_token %}
+  <form method="post">
+    {{form}}
+    <button type="submit">Зарегестрироваться</button>
+  </form>
+</div>
+
+{% endblock %}
