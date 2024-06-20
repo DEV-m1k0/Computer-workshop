@@ -29,7 +29,6 @@ jobs:
       run: |
         python core/manage.py test
       env:
-        DJANGO_SETTINGS_MODULE: core.settings
         DBENGINE: django.db.backends.mysql
         DBNAME: ${{ secrets.MYSQL_DBNAME }}
         DBUSER: ${{ secrets.MYSQL_DBUSER }}
@@ -40,7 +39,6 @@ jobs:
     - name: Run Migrations
       run: python core/manage.py migrate
       env:
-        DJANGO_SETTINGS_MODULE: core.settings
         DBENGINE: django.db.backends.mysql
         DBNAME: ${{ secrets.MYSQL_DBNAME }}
         DBUSER: ${{ secrets.MYSQL_DBUSER }}
