@@ -16,11 +16,11 @@ jobs:
         python-version: [3.11, 3.12]
     env:
       DBENGINE: django.db.backends.mysql
-      DBNAME: ${{ secrets.MYSQL_DBNAME }}
-      DBUSER: ${{ secrets.MYSQL_DBUSER }}
-      DBPASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-      DBHOST: ${{ secrets.MYSQL_DBHOST }}
-      DBPORT: ${{ secrets.MYSQL_DBPORT }}
+      DATABASE_NAME: ${{ secrets.MYSQL_DBNAME }}
+      DATABASE_USER: ${{ secrets.MYSQL_DBUSER }}
+      DATABASE_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+      DATABASE_HOST: ${{ secrets.MYSQL_DBHOST }}
+      DATABASE_PORT: ${{ secrets.MYSQL_DBPORT }}
 
     steps:
     - uses: actions/checkout@v4
@@ -35,21 +35,7 @@ jobs:
     - name: Run Tests
       run: |
         python core/manage.py test
-      # env:
-      #   DBENGINE: django.db.backends.mysql
-      #   DBNAME: ${{ secrets.MYSQL_DBNAME }}
-      #   DBUSER: ${{ secrets.MYSQL_DBUSER }}
-      #   DBPASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-      #   DBHOST: ${{ secrets.MYSQL_DBHOST }}
-      #   DBPORT: ${{ secrets.MYSQL_DBPORT }}
 
     - name: Run Migrations
       run: python core/manage.py migrate
-      # env:
-      #   DBENGINE: django.db.backends.mysql
-      #   DBNAME: ${{ secrets.MYSQL_DBNAME }}
-      #   DBUSER: ${{ secrets.MYSQL_DBUSER }}
-      #   DBPASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-      #   DBHOST: ${{ secrets.MYSQL_DBHOST }}
-      #   DBPORT: ${{ secrets.MYSQL_DBPORT }}
 
