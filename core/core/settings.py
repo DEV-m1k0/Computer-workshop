@@ -30,6 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = "index"
 
 # Application definition
 
@@ -56,7 +57,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "core.urls"
 
-STATICFILE_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 TEMPLATES = [
     {
